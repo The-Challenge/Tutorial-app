@@ -8,6 +8,8 @@ require('./config/routes.js')(app , express);
 
 var port = 3000
 
-// mongoose.Promise = global.Promise
-// mongoose.connect('mongodb://localhost/mydb');
+ mongoose.Promise = global.Promise
+ mongoose.connect('mongodb://localhost/mydb');
+
+
 app.listen(process.env.PORT || port);
