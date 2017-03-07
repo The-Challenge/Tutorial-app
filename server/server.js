@@ -6,7 +6,7 @@ var app = express()
 require('./config/middleware.js')(app , express);
 require('./config/routes.js')(app , express);
 
-var port = 3000
+var port = 4000
 
  mongoose.Promise = global.Promise
  mongoose.connect('mongodb://localhost/mydb');

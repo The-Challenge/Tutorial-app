@@ -10,7 +10,7 @@ module.exports ={
 				if (err) {
 					res.status(500).send(err);
 				}else{
-					res.status(201).json(dataInserted[0]);
+					res.status(201).json(dataInserted);
 				}
 		})
 	},

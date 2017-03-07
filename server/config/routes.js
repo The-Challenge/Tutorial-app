@@ -7,7 +7,7 @@ module.exports = function (app, express) {
 //=============================================================================
 /*								user route									 */
 //=============================================================================
-	app.post('/api/user/', userController.insertUser) 
+	app.post('/api/user', userController.insertUser) 
 	app.get('/api/user/:name', userController.getUser)
 	//app.get('/api/user/', bookController.getAllBooks)
 
