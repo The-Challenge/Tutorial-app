@@ -3,14 +3,13 @@ var app = express()
 var userController = require('../users/usersController.js');
 
 module.exports = function (app, express) {
-	
-//=============================================================================
-/*								user route									 */
-//=============================================================================
-	app.post('/api/user/', userController.insertUser) 
-	app.get('/api/user/:name', userController.getUser)
-	//app.get('/api/user/', bookController.getAllBooks)
 
+	app.post('/api/user/', userController.insertUser) 
+	app.post('/api/UserSignup', userController.userSignup)
+	app.post('/api/UserSignin', userController.userSignin);
+
+
+	app.get('/api/user/:name', userController.getUser)
 	app.get('/', function(req, res) {
  	 res.send('helloooo! Angular2');
 	});
