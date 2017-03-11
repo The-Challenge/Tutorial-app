@@ -1,10 +1,12 @@
 var express = require('express');
 var mongoose = require('mongoose')
+var path = require ('path')
 
 var app = express()
 
-require('./config/middleware.js')(app , express);
-require('./config/routes.js')(app , express);
+require('./server/config/middleware.js')(app , express);
+require('./server/config/routes.js')(app , express);
+
 
 var port = 8000
 
