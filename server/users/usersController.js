@@ -67,8 +67,9 @@ module.exports ={
 			          res.send("password is not correct");
 			        }
 			      })
+			}else {
+				res.send("Username not found!!")
 			}
-			res.send("Username not found!!")
 		})
 
 
@@ -84,7 +85,8 @@ module.exports ={
 		})
 	},
 	getUser : function (req, res) {
-		User.find({name:req.body.name},function (err,Allusers) {
+		User.findOne({name:req.body.name},function (err,Allusers) {
+			console.log("alllllllll",Allusers)
 			if (err) {
 				res.status(500).send(err);
 			}else{
