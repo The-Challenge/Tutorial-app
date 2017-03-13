@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,9 @@ import { SignupComponent } from './signup/signup.component';
 const ROUTES = [
   { path: '',redirectTo: '',pathMatch: 'full'},
   { path: 'Signup',component: SignupComponent},
-  { path: 'Login',component: LoginComponent}
+  { path: 'Login',component: LoginComponent},
+  //otherwise redirect to home
+  { path: '**',redirectTo:''}
   ];
 
 @NgModule({

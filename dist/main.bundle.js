@@ -53,7 +53,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'app works!';
+        this.title = 'Main page';
     }
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
@@ -102,7 +102,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ROUTES = [
     { path: '', redirectTo: '', pathMatch: 'full' },
     { path: 'Signup', component: __WEBPACK_IMPORTED_MODULE_7__signup_signup_component__["a" /* SignupComponent */] },
-    { path: 'Login', component: __WEBPACK_IMPORTED_MODULE_6__login_login_component__["a" /* LoginComponent */] }
+    { path: 'Login', component: __WEBPACK_IMPORTED_MODULE_6__login_login_component__["a" /* LoginComponent */] },
+    //otherwise redirect to home
+    { path: '**', redirectTo: '' }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -150,7 +152,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginComponent = (function () {
     function LoginComponent() {
     }
+    //   model: any = {};
+    //   loading = false;
+    //   returnUrl: string;
+    //   constructor(
+    //     private route: ActivatedRoute,
+    //     private router: Router,
+    //     private authenticationService: AuthenticationService,
+    //     // private alertService: AlertService
+    //   ) { }
     LoginComponent.prototype.ngOnInit = function () {
+        // reset login status
+        // this.authenticationService.logout();
+        // get return url from route parameters or default to '/'
+        // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     };
     LoginComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
@@ -225,7 +240,7 @@ exports = module.exports = __webpack_require__(88)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "a {\r\n    cursor: pointer;\r\n}\r\n\r\n.help-block {\r\n    font-size: 12px;\r\n}", ""]);
 
 // exports
 
@@ -274,21 +289,21 @@ module.exports = module.exports.toString();
 /***/ 511:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>\r\n  {{title}}\r\n  <a routerLink=\"/Signup\">Signup</a>\r\n</h1>\r\n<router-outlet></router-outlet>"
+module.exports = "<!-- main app container -->\n<h1>\n  {{title}}\n</h1>\n<div class=\"jumbotron\">\n    <div class=\"container\">\n        <div class=\"col-sm-8 col-sm-offset-2\">\n            <router-outlet></router-outlet>\n        </div>\n    </div>\n</div>\n\n<!-- credits -->\n<!--<div class=\"text-center\">\n    <p>\n        <a href=\"http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial\" target=\"_top\">Angular 2 User Registration and Login Example & Tutorial</a>\n    </p>\n    <p>\n        <a href=\"http://jasonwatmore.com\" target=\"_top\">JasonWatmore.com</a>\n    </p>\n</div>-->\n\n\n<a routerLink=\"/Signup\">Signup</a>\n<a routerLink=\"/Login\">Login</a>\n\n<router-outlet></router-outlet>"
 
 /***/ }),
 
 /***/ 512:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  login works!\r\n</p>\r\n"
+module.exports = "<div class=\"col-md-6 col-md-offset-3\">\n    <h2>Login</h2>\n    <!--<form name=\"form\" (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': f.submitted && !username.valid }\">\n            <label for=\"username\">Username</label>\n            <input type=\"text\" class=\"form-control\" name=\"username\" [(ngModel)]=\"model.username\" #username=\"ngModel\" required />\n            <div *ngIf=\"f.submitted && !username.valid\" class=\"help-block\">Username is required</div>\n        </div>\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': f.submitted && !password.valid }\">\n            <label for=\"password\">Password</label>\n            <input type=\"password\" class=\"form-control\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\" required />\n            <div *ngIf=\"f.submitted && !password.valid\" class=\"help-block\">Password is required</div>\n        </div>\n        <div class=\"form-group\">\n            <button [disabled]=\"loading\" class=\"btn btn-primary\">Login</button>\n            <img *ngIf=\"loading\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n            <a [routerLink]=\"['/Signup']\" class=\"btn btn-link\">Signup</a>\n        </div>\n    </form>-->\n</div>\n"
 
 /***/ }),
 
 /***/ 513:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  signup works!\n\n  <a routerLink=\"/Login\">Login</a>\n</p>\n"
+module.exports = "<form>\n    <div class=\"form-group\">\n        <label for=\"username\">Username</label>\n        <input \n            id=\"username\" \n            type=\"text\" \n            class=\"form-control\">\n    </div>\n    <div class=\"form-group\">\n        <label for=\"password\">Password</label>\n        <input \n            id=\"password\" \n            type=\"text\" \n            class=\"form-control\">\n    </div>\n    <button class=\"btn btn-primary\" type=\"submit\">Sign Up</button>\n      <a routerLink=\"/Login\">Login</a>\n\n</form>\n"
 
 /***/ }),
 
