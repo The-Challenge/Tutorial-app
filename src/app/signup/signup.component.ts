@@ -10,7 +10,7 @@ import { AuthenticationService } from '../services/authentication.service';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  providers:[AuthenticationService]
+  providers:[AuthenticationService] 
 })
 export class SignupComponent implements OnInit {
   model: any = {};
@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
     private authenticationService: AuthenticationService
 
 
-   ) {
+   ) {  
    }
 
   ngOnInit() {

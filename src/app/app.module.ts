@@ -7,9 +7,10 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 const ROUTES = [
-  { path: '',redirectTo: '',pathMatch: 'full'},
+  { path: '',redirectTo: '',pathMatch: 'full',component: MainpageComponent},
   { path: 'Signup',component: SignupComponent},
   { path: 'Login',component: LoginComponent},
   //otherwise redirect to home
@@ -20,7 +21,8 @@ const ROUTES = [
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,
