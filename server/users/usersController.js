@@ -49,7 +49,7 @@ module.exports ={
 	},
 	userSignin : function(req,res){
 
-		// console.log('%%%%%%%%%%%%% body',req.body)
+		console.log('%%%%%%%%%%%%% body',req.body)
 		var password = req.body.password;
 		var Username = req.body.username;
 		User.findOne({username:Username}).then(function(user){
