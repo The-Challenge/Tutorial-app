@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-
+import {LocationStrategy,HashLocationStrategy} from '@angular/common' 
 const ROUTES = [
   { path: '',redirectTo: '',pathMatch: 'full',component: MainpageComponent},
   { path: 'Signup',component: SignupComponent},
@@ -30,7 +30,7 @@ const ROUTES = [
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
