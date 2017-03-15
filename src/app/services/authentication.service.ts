@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers,RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
-// import { User } from './usersModel.js'
+
  class User {
     username: string;
     password: string;
