@@ -9,12 +9,16 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import {LocationStrategy,HashLocationStrategy} from '@angular/common' 
+import {UserpageComponent } from './userpage/userpage.component';
+
 const ROUTES = [
   { path: '',redirectTo: '',pathMatch: 'full',component: MainpageComponent},
   { path: 'Signup',component: SignupComponent},
   { path: 'Login',component: LoginComponent},
+  { path:'userprofile/:username',component: UserpageComponent },
   //otherwise redirect to home
-  { path: '**',redirectTo:''}
+  { path: '**',redirectTo:''},
+  // {path :'userprofile/:id'}
   ];
 
 @NgModule({
@@ -22,6 +26,7 @@ const ROUTES = [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    UserpageComponent,
     MainpageComponent
   ],
   imports: [
