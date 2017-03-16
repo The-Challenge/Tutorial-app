@@ -32,18 +32,28 @@ export class AuthenticationService {
 
                 // login successful if there's a jwt token in the response
                 let user = response.json();
+                console.log('11111111111111111111loginn',user.token)
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
             });
     }
-        create(user: User) {
-            console.log('!!!!!!!!!!!!!!create',User)
 
-        return this.http.post('/api/UserSignup', user, this.jwt()).map((response: Response) => response.json());
+
+    signup(user: User) {
+
+        console.log('!!!!!!!!!!!!!!signup',User)
+        // localStorage.setItem('currentUser', JSON.stringify(user));
+        return this.http.post('/api/UserSignup', user, this.jwt()).map((response: Response) =>{
+            let user= response.json()
+            if (user && user.token) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                }
+
+            });
     }
-
 
     logout() {
         // remove user from local storage to log user out
