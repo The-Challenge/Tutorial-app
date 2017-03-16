@@ -28,14 +28,15 @@ export class SignupComponent implements OnInit {
   }
   Signup(){
     this.loading = true;
-        this.authenticationService.create(this.model)
+        this.authenticationService.signup(this.model)
             .subscribe(
                 data => {
                   console.log('!!!!!!!!!!!!!!singup',this.model)
-                    this.router.navigate(['/login']);
+                  this.router.navigate(['userprofile/'+ this.model.username]);
                 },
                 error => {
                     this.loading = false;
+
                 });
 
   }
