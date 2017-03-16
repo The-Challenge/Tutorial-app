@@ -8,17 +8,11 @@ module.exports = function (app, express) {
 	app.post('/api/tutorial', tutorialController.addTutorial) 
 	app.get('/api/tutorials', tutorialController.getTutorials) 
 
-	app.post('/api/user/', userController.insertUser) 
+	//app.post('/api/user/', userController.insertUser) 
 	app.post('/api/UserSignup', userController.userSignup)
 	app.post('/api/UserSignin', userController.userSignin);
 
 
 	app.get('/api/user/:name', userController.getUser)
-	app.get('/', function(req, res) {
- 	 res.send('helloooo! Angular2');
-	});
-	// app.get('*', (req, res) => {
-
- //  		res.sendFile(path.join(__dirname, 'dist/index.html'));
-	// });
+	
 };

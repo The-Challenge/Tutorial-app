@@ -24,7 +24,7 @@ export class MainpageService {
         return this.http.post('/api/tutorial', tutorial).map((response: Response) => response.json());
     }
 
- gettutorial () {
+ gettutorials () {
         return this.http.get('/api/tutorials').map((response: Response) => response.json());
     }
 

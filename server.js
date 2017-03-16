@@ -16,3 +16,5 @@ var port = 8000
 
 app.listen(process.env.PORT || port);
 console.log("listining 8000")
+
+module.exports = app;
