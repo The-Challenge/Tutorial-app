@@ -1,64 +1,71 @@
-const app = require('../server.js')
+const app = require('../../server.js')
 const request = require('supertest')
 const expect = require('chai').expect
 
-describe('books', function () {
-  it('Should get all books', function (done) {
-    request(app)
-      .get('/api/book/')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end(function (err, resp) {
-        if (err) {
-          throw new Error(err)
-        }
-        expect(resp.body).to.be.an('array')
-        done()
-      })
-  })
+describe('user', function () {
+  // it('Should get user', function (done) {
+  //   request(app)
+  //     .get('/api/UserSignin')
+  //     .set('Accept', 'application/json')
+  //     .expect('Content-Type', /json/)
+  //     .expect(200)
+  //     .end(function (err, resp) {
+  //       if (err) {
+  //         throw new Error(err)
+  //       }
+  //       expect(resp.body).to.be.an('array')
+  //       done()
+  //     })
+  // })
 
-  it('Should create a new book', function (done) {
+  it('Should get one user', function (done) {
     request(app)
-      .post('/api/book/')
+      .post('/api/UserSignin')
       .send([{
-        title: 'Test Book',
-        auther: 'Ibrahim',
-        pageNumber: '666'
-      }])
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(201)
-      .end(function (err, resp) {
-        if (err) {
-          console.log(err)
-        }
-        expect(resp.body).to.be.an('object')
-        done()
-      })
-  })
-
-  it('Should get one book', function (done) {
-    request(app)
-      .post('/api/book/')
-      .send([{
-        title: 'Test Book',
-        auther: 'Ibrahim',
-        pageNumber: '666'
+        username: 'kamal',
+        email: 'kam@907',
+        password: '123'
       }])
       .set('Accept', 'application/json')
       .end(function (err, resp) {
         if (err) {
           console.log(err)
         }
-        let book = resp.body
+        let user = resp.body
         request(app)
-          .get('/api/book/' + book.title)
+          .get('/api/UserSignin/' + user.username)
           .end(function (err, resp) {
             if (err) {
               throw new Error(err)
             }
-            expect(resp.body.book.title).to.equal('Test Book')
+            expect(resp.body.user.username).to.equal('Test User')
+            done()
+          })
+      })
+      done()
+  })
+
+  it('Should create one user', function (done) {
+    request(app)
+      .post('/api/UserSignup')
+      .send([{
+        username: 'kamal',
+        email: 'kam@907',
+        password: '123'
+      }])
+      .set('Accept', 'application/json')
+      .end(function (err, resp) {
+        if (err) {
+          console.log(err)
+        }
+        let user = resp.body
+        request(app)
+          .get('/api/UserSignup/' + user.username)
+          .end(function (err, resp) {
+            if (err) {
+              throw new Error(err)
+            }
+            expect(resp.body.user.username).to.equal('Test User')
             done()
           })
       })

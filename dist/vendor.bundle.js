@@ -31816,59 +31816,7 @@ function FormArray_tsickle_Closure_declarations() {
 //# sourceMappingURL=model.js.map
 
 /***/ }),
-<<<<<<< HEAD
 /* 126 */
-=======
-/* 124 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_index__ = __webpack_require__(419);
-/* unused harmony reexport BrowserXhr */
-/* unused harmony reexport JSONPBackend */
-/* unused harmony reexport JSONPConnection */
-/* unused harmony reexport CookieXSRFStrategy */
-/* unused harmony reexport XHRBackend */
-/* unused harmony reexport XHRConnection */
-/* unused harmony reexport BaseRequestOptions */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["b"]; });
-/* unused harmony reexport BaseResponseOptions */
-/* unused harmony reexport ResponseOptions */
-/* unused harmony reexport ReadyState */
-/* unused harmony reexport RequestMethod */
-/* unused harmony reexport ResponseContentType */
-/* unused harmony reexport ResponseType */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["c"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["d"]; });
-/* unused harmony reexport Jsonp */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["a"]; });
-/* unused harmony reexport JsonpModule */
-/* unused harmony reexport Connection */
-/* unused harmony reexport ConnectionBackend */
-/* unused harmony reexport XSRFStrategy */
-/* unused harmony reexport Request */
-/* unused harmony reexport Response */
-/* unused harmony reexport QueryEncoder */
-/* unused harmony reexport URLSearchParams */
-/* unused harmony reexport VERSION */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the http package.
- */
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-/* 125 */
->>>>>>> 31d769878042e3a02dcb778df4735f6082f1ee1c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32441,63 +32389,6 @@ var /** @type {?} */ DOCUMENT = new __WEBPACK_IMPORTED_MODULE_0__angular_core__[
 //# sourceMappingURL=dom_tokens.js.map
 
 /***/ }),
-<<<<<<< HEAD
-=======
-/* 130 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_index__ = __webpack_require__(445);
-/* unused harmony reexport RouterLink */
-/* unused harmony reexport RouterLinkWithHref */
-/* unused harmony reexport RouterLinkActive */
-/* unused harmony reexport RouterOutlet */
-/* unused harmony reexport RouteReuseStrategy */
-/* unused harmony reexport NavigationCancel */
-/* unused harmony reexport NavigationEnd */
-/* unused harmony reexport NavigationError */
-/* unused harmony reexport NavigationStart */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["b"]; });
-/* unused harmony reexport RoutesRecognized */
-/* unused harmony reexport ROUTER_CONFIGURATION */
-/* unused harmony reexport ROUTER_INITIALIZER */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["a"]; });
-/* unused harmony reexport provideRoutes */
-/* unused harmony reexport RouterOutletMap */
-/* unused harmony reexport NoPreloading */
-/* unused harmony reexport PreloadAllModules */
-/* unused harmony reexport PreloadingStrategy */
-/* unused harmony reexport RouterPreloader */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["c"]; });
-/* unused harmony reexport ActivatedRouteSnapshot */
-/* unused harmony reexport RouterState */
-/* unused harmony reexport RouterStateSnapshot */
-/* unused harmony reexport PRIMARY_OUTLET */
-/* unused harmony reexport UrlHandlingStrategy */
-/* unused harmony reexport DefaultUrlSerializer */
-/* unused harmony reexport UrlSegment */
-/* unused harmony reexport UrlSegmentGroup */
-/* unused harmony reexport UrlSerializer */
-/* unused harmony reexport UrlTree */
-/* unused harmony reexport VERSION */
-/* unused harmony reexport __router_private__ */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the router package.
- */
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
->>>>>>> 31d769878042e3a02dcb778df4735f6082f1ee1c
 /* 131 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -77318,11 +77209,7 @@ function JsonpModule_tsickle_Closure_declarations() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_request_options__ = __webpack_require__(180);
 /* unused harmony reexport BaseRequestOptions */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__base_request_options__["a"]; });
-<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__base_response_options__ = __webpack_require__(126);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__base_response_options__ = __webpack_require__(125);
->>>>>>> 31d769878042e3a02dcb778df4735f6082f1ee1c
 /* unused harmony reexport BaseResponseOptions */
 /* unused harmony reexport ResponseOptions */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__enums__ = __webpack_require__(39);
@@ -77330,15 +77217,9 @@ function JsonpModule_tsickle_Closure_declarations() {
 /* unused harmony reexport RequestMethod */
 /* unused harmony reexport ResponseContentType */
 /* unused harmony reexport ResponseType */
-<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__headers__ = __webpack_require__(82);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_6__headers__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__http__ = __webpack_require__(286);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__headers__ = __webpack_require__(81);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_6__headers__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__http__ = __webpack_require__(285);
->>>>>>> 31d769878042e3a02dcb778df4735f6082f1ee1c
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_7__http__["a"]; });
 /* unused harmony reexport Jsonp */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__http_module__ = __webpack_require__(418);
