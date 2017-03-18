@@ -23,8 +23,20 @@ module.exports ={
 				res.status(200).json(AllTutorials)
 			}
 		})
+	},
+
+	getTutorial : function (req, res) {
+		Tutorial.findOne({tutorialname:req.body.tutorialname},function (err,Alltutorialname) {
+			console.log("alllllllll",Alltutorialname)
+			if (err) {
+				res.status(500).send(err);
+			}else{
+				res.status(200).json(Alltutorialname)
+			}
+		})
 	}
 }
+
 
 
 //get all the users controller

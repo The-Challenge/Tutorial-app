@@ -2,73 +2,59 @@ const app = require('../../server.js')
 const request = require('supertest')
 const expect = require('chai').expect
 
-describe('user', function () {
-  // it('Should get user', function (done) {
-  //   request(app)
-  //     .get('/api/UserSignin')
-  //     .set('Accept', 'application/json')
-  //     .expect('Content-Type', /json/)
-  //     .expect(200)
-  //     .end(function (err, resp) {
-  //       if (err) {
-  //         throw new Error(err)
-  //       }
-  //       expect(resp.body).to.be.an('array')
-  //       done()
-  //     })
-  // })
-
-  it('Should get one user', function (done) {
+describe('tutorials', function () {
+  it('Should get tutorials', function (done) {
     request(app)
-      .post('/api/UserSignin')
+      .get('/api/tutorials')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function (err, resp) {
+        if (err) {
+          throw new Error(err)
+        }
+        expect(resp.body).to.be.an('array')
+        done()
+      })
+  })
+
+// {
+// 	"tutorialname" : "java",
+// 	"description" : "introdition",
+// 	"ownername" : "kamal",
+//     "duration" : "7hours",
+//     "users" :"1000000",
+//     "image" : "" 
+// }
+
+  it('Should get one tutorial', function (done) {
+    request(app)
+      .post('/api/tutorial')
       .send([{
-        username: 'kamal',
-        email: 'kam@907',
-        password: '123'
-      }])
+        tutorialname : "java",
+        description : "introdition",
+        ownername : "kamal",
+        duration : "7hours",
+        users :"1000000",
+        image : "" 
+}])
       .set('Accept', 'application/json')
       .end(function (err, resp) {
         if (err) {
           console.log(err)
         }
-        let user = resp.body
+        let tutorial = resp.body
         request(app)
-          .get('/api/UserSignin/' + user.username)
+          .get('/api/tutorials/' + tutorial.tutorialname)
           .end(function (err, resp) {
             if (err) {
               throw new Error(err)
             }
-            expect(resp.body.user.username).to.equal('Test User')
+            expect(resp.body.tutorial.username).to.equal('Test tutorial')
             done()
           })
       })
       done()
   })
 
-  it('Should create one user', function (done) {
-    request(app)
-      .post('/api/UserSignup')
-      .send([{
-        username: 'kamal',
-        email: 'kam@907',
-        password: '123'
-      }])
-      .set('Accept', 'application/json')
-      .end(function (err, resp) {
-        if (err) {
-          console.log(err)
-        }
-        let user = resp.body
-        request(app)
-          .get('/api/UserSignup/' + user.username)
-          .end(function (err, resp) {
-            if (err) {
-              throw new Error(err)
-            }
-            expect(resp.body.user.username).to.equal('Test User')
-            done()
-          })
-      })
-      done()
-  })
 })
