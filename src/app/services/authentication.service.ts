@@ -12,13 +12,16 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: Http) { }
+    private loggedIn = false;
+    constructor(private http: Http) {
+    this.loggedIn = !!localStorage.getItem('currentUser');
+     }
 
     private jwt() {
         // create authorization header with jwt token
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
-                    console.log('!!!!!!!!!!!!!!jwt currentUser',currentUser)
+                    // console.log('!!!!!!!!!!!!!!jwt currentUser',currentUser)
 
             let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
             return new RequestOptions({ headers: headers });
@@ -36,6 +39,8 @@ export class AuthenticationService {
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.loggedIn = true;
+
                 }
             });
     }
@@ -56,7 +61,13 @@ export class AuthenticationService {
     }
 
     logout() {
+        this.loggedIn = false;
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
     }
+
+    isLoggedIn() {
+        console.log("in service")
+        return this.loggedIn;
+  }
 }

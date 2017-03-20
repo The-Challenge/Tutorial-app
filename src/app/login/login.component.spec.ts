@@ -23,10 +23,3 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-
-// src\app\login\login.component.spec.ts (5,1): Cannot find name 'describe'. (2304)
-// src\app\login\login.component.spec.ts (9,3): Cannot find name 'beforeEach'. (2304)
-// src\app\login\login.component.spec.ts (16,3): Cannot find name 'beforeEach'. (2304)
-// src\app\login\login.component.spec.ts (22,3): Cannot find name 'it'. (2304)
-// src\app\login\login.component.spec.ts (23,5): Cannot find name 'expect'. (2304)

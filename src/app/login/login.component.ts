@@ -1,25 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
+import { Subject } from 'rxjs/Subject';
+import { UserprofileService } from '../services/userprofile.service'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthenticationService]
+  providers: [AuthenticationService,UserprofileService]
 })
 export class LoginComponent implements OnInit {
-  model: any = {};
-  loading = false;
-  returnUrl: string; 
+    private storage;
+    model: any = {};
+    loading = false;
+    public looged;
+    returnUrl: string;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService
+    constructor(
+      private route: ActivatedRoute,
+      private router: Router,
+      private authenticationService: AuthenticationService
+    //   private userprofileService : UserprofileService
   ) { }
       ngOnInit() {
+
+    //          this.storage = this.route.queryParams.subscribe(params =>{
+    //   // console.log('@@@@@@@userpage//params',params)
+    //   let username =params['username'];
+    //   // console.log('@@@@@@@userpage//username',username)
+    //   this.userprofileService.getProfile(username)
+    // })
         // reset login status
         // this.authenticationService.logout();
 
@@ -29,13 +42,22 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.loading = true;
-        console.log('login component',this.model)
+        // console.log('login component',this.model)
         this.authenticationService.login(this.model)
             .subscribe(
                 data => {
-                    console.log('!!!!!!!!!!!!!!!!!',this.model.username)
+                    this.looged=true;
+                    console.log(this.looged)
+                    console.log('this.model.username!!!!!!!!!!!!!!!!!',this.model)
                     // this.router.navigate([this.returnUrl]);
                     this.router.navigate(['userprofile/'+ this.model.username]);
+
+                },
+                error =>{
+                    this.loading =false
+
+                    this.router.navigate(['/Login']);
+
 
                 });
     }
