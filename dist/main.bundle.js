@@ -131,7 +131,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = { name: "tutorials", class: "A+", image: "123" };
+        this.title = '';
     }
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
@@ -187,7 +187,7 @@ var ROUTES = [
     { path: '', redirectTo: '', pathMatch: 'full', component: __WEBPACK_IMPORTED_MODULE_8__mainpage_mainpage_component__["a" /* MainpageComponent */] },
     { path: 'Signup', component: __WEBPACK_IMPORTED_MODULE_7__signup_signup_component__["a" /* SignupComponent */] },
     { path: 'Login', component: __WEBPACK_IMPORTED_MODULE_6__login_login_component__["a" /* LoginComponent */] },
-    { path: 'userprofile/:username', component: __WEBPACK_IMPORTED_MODULE_10__userpage_userpage_component__["a" /* UserpageComponent */] },
+    { path: 'userprofile/:username', component: __WEBPACK_IMPORTED_MODULE_10__userpage_userpage_component__["a" /* UserpageComponent */], authenticate: true },
     //otherwise redirect to home
     { path: '**', redirectTo: '' },
 ];
@@ -203,7 +203,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_10__userpage_userpage_component__["a" /* UserpageComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__mainpage_mainpage_component__["a" /* MainpageComponent */]
             ],
-            imports: [
+            imports: [__WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],
