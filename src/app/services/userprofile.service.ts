@@ -10,6 +10,7 @@ export class UserprofileService {
   ) { }
 
   getProfile(username){
+    console.log('userprofile service',username)
     return this.http.get('/api/userprofile/' + username).map(res => res.json())
   }
 

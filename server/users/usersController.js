@@ -86,7 +86,7 @@ module.exports ={
 	},
 	getUser : function (req, res) {
 		User.findOne({name:req.body.name},function (err,Allusers) {
-			console.log("alllllllll",Allusers)
+			// console.log("alllllllll",Allusers)
 			if (err) {
 				res.status(500).send(err);
 			}else{
