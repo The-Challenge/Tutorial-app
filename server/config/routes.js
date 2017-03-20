@@ -7,6 +7,7 @@ module.exports = function (app, express) {
 
 	app.post('/api/tutorial', tutorialController.addTutorial) 
 	app.get('/api/tutorials', tutorialController.getTutorials) 
+	app.get('/api/tutorials/:tutorialname', tutorialController.getTutorial)
 
 	//app.post('/api/user/', userController.insertUser) 
 	app.post('/api/UserSignup', userController.userSignup)

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +12,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;
+  public looged;
   returnUrl: string;
 
   constructor(
@@ -33,9 +34,18 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model)
             .subscribe(
                 data => {
-                    console.log('!!!!!!!!!!!!!!!!!',this.model.username)
+                    this.looged=true;
+                    console.log(this.looged)
+                    console.log('this.model.username!!!!!!!!!!!!!!!!!',this.model.username)
                     // this.router.navigate([this.returnUrl]);
                     this.router.navigate(['userprofile/'+ this.model.username]);
+
+                },
+                error =>{
+                    this.loading =false
+
+                    this.router.navigate(['/Login']);
+
 
                 });
     }
