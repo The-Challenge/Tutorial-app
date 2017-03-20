@@ -11,15 +11,16 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import {LocationStrategy,HashLocationStrategy} from '@angular/common' 
 import { UserpageComponent } from './userpage/userpage.component';
 import { GuardGuard } from './guard.guard'
+import { AuthenticationService } from './services/authentication.service';
 
 const ROUTES = [
   { path: '',redirectTo: 'main',pathMatch: 'full'},
-  { path:'main',component: MainpageComponent},
-  { path: 'Signup',component: SignupComponent ,canActivate: [GuardGuard]},
+  { path:'main',component: MainpageComponent,pathMatch: 'full'},
+  { path: 'Signup',component: SignupComponent },
   { path: 'Login',component: LoginComponent},
   { path:'userprofile/:username',component: UserpageComponent,canActivate: [GuardGuard] },
   //otherwise redirect to home
-  // { path: '**',redirectTo:''},
+  { path: '**',redirectTo:'main'},
   // {path :'userprofile/:id'}
   ];
 
@@ -37,7 +38,7 @@ const ROUTES = [
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [GuardGuard,{provide:LocationStrategy,useClass:HashLocationStrategy}],
+  providers: [GuardGuard,AuthenticationService,{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,7 +40,8 @@ export class UserpageComponent implements OnInit {
     this.loginComponent.looged=false
     // console.log(this.loginComponent.looged=false)
     this.authenticationService.logout()
-    // console.log('logout',)
+    this.router.navigate(['main/']);
+
 
   }
  
