@@ -14,7 +14,7 @@ module.exports ={
 	},
 	getTutorials : function (req, res) {
 		Tutorial.find(function (err,AllTutorials) {
-			console.log("alllllllll",AllTutorials)
+			// console.log("alllllllll",AllTutorials)
 			if (err) {
 				res.status(500).send(err);
 			}else{
@@ -25,7 +25,7 @@ module.exports ={
 
 	getTutorial : function (req, res) {
 		Tutorial.findOne({tutorialname:req.body.tutorialname},function (err,Alltutorialname) {
-			console.log("alllllllll",Alltutorialname)
+			// console.log("alllllllll",Alltutorialname)
 			if (err) {
 				res.status(500).send(err);
 			}else{
