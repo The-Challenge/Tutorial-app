@@ -286,7 +286,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_11__userpage_userpage_component__["a" /* UserpageComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__mainpage_mainpage_component__["a" /* MainpageComponent */]
             ],
-            imports: [
+            imports: [__WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],

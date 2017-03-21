@@ -21,6 +21,7 @@ const ROUTES = [
   { path:'main',component: MainpageComponent,pathMatch: 'full'},
   { path: 'Signup',component: SignupComponent },
   { path: 'Login',component: LoginComponent},
+
   { path:'userprofile/:username',component: UserpageComponent,canActivate: [GuardGuard] },
   //otherwise redirect to home
   { path: '**',redirectTo:'main'},
@@ -35,7 +36,7 @@ const ROUTES = [
     UserpageComponent,
     MainpageComponent
   ],
-  imports: [
+  imports: [RouterModule,
     BrowserModule,
     FormsModule,
     HttpModule,
