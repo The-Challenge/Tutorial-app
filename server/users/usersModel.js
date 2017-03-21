@@ -15,6 +15,7 @@ var userSchema = new mongoose.Schema({
 		type : String,
 		required : true
 	}
+	// tutoridals : Array
 });
 
 var user = mongoose.model('user', userSchema);

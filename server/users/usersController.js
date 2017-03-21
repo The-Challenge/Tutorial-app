@@ -93,6 +93,19 @@ module.exports ={
 				res.status(200).json(Allusers)
 			}
 		})
+	},
+	updateUser : function(req,res){
+		 console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!update user',req.body)
+		User.update({username: req.body.username}, req.body, function(err, values) {
+
+        	if (!err) {
+            	res.json("okay");
+        } else {
+            res.write("fail");
+        }
+    });
+
+
 	}
 }
 

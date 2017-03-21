@@ -41,8 +41,6 @@ export class UserpageComponent implements OnInit {
     // console.log(this.loginComponent.looged=false)
     this.authenticationService.logout()
     this.router.navigate(['main/']);
-
-
   }
  
 
