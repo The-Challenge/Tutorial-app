@@ -39,6 +39,7 @@ export class AuthenticationService {
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('username', JSON.stringify(model.username));
                     this.loggedIn = true;
 
                 }
@@ -64,10 +65,12 @@ export class AuthenticationService {
         this.loggedIn = false;
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('username');
+
     }
 
     isLoggedIn() {
-        console.log("in service")
+        console.log("in service isLoggedIn",this.loggedIn)
         return this.loggedIn;
   }
 }
