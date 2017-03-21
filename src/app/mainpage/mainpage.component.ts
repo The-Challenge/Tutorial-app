@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/map'
+import 'rxjs/Rx';
+import { HttpModule } from '@angular/http';
 
 import { MainpageService } from '../services/mainpage.service';
-import { HttpModule} from '@angular/http';
 import { LoginComponent  } from '../login/login.component';
 import { AuthenticationService } from '../services/authentication.service' 
 import { UserprofileService } from '../services/userprofile.service'
@@ -24,6 +26,7 @@ export class MainpageComponent implements OnInit {
    checkToken = JSON.parse(localStorage.getItem('currentUser'));
   looged =this.logincomponent.looged;
   constructor(
+    // private http: Http,
     private router: ActivatedRoute,
     private mainpageService: MainpageService,
     private authenticationService: AuthenticationService,
@@ -48,10 +51,23 @@ export class MainpageComponent implements OnInit {
                 });
   }
 
-  Subscribe(TutorialID){
-   var username = JSON.parse(localStorage.getItem('username'));
+  Sub(TutorialID){
+   var username = JSON.parse(localStorage.getItem('username'))
    this.userprofileService.addNewTutorial(TutorialID,username)
- 
+   .subscribe(
+                data => {
+                    console.log('this.model.username!!!!!!!!!!!!!!!!!')
+                    // this.router.navigate([this.returnUrl]);
+                   
+                },
+                error =>{
+                    this.loading =false
+
+                    // this.router.navigate(['/Login']);
+
+
+                });
+
   //  console.log(username)
     // console.log(model)
     // console.log(owner)

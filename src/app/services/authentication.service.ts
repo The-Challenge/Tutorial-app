@@ -21,8 +21,7 @@ export class AuthenticationService {
         // create authorization header with jwt token
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
-                    // console.log('!!!!!!!!!!!!!!jwt currentUser',currentUser)
-
+            // console.log('!!!!!!!!!!!!!!jwt currentUser',currentUser)
             let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
             return new RequestOptions({ headers: headers });
         }
@@ -31,8 +30,7 @@ export class AuthenticationService {
     login(model) {
         return this.http.post('/api/UserSignin', model)
             .map((response: Response) => {
-                         console.log('service component',JSON.stringify(model))
-
+                console.log('service component',JSON.stringify(model))
                 // login successful if there's a jwt token in the response
                 let user = response.json();
                 console.log('11111111111111111111loginn',user.token)
@@ -41,7 +39,6 @@ export class AuthenticationService {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     localStorage.setItem('username', JSON.stringify(model.username));
                     this.loggedIn = true;
-
                 }
             });
     }
@@ -54,10 +51,9 @@ export class AuthenticationService {
         return this.http.post('/api/UserSignup', user, this.jwt()).map((response: Response) =>{
             let user= response.json()
             if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                }
-
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('currentUser', JSON.stringify(user));
+            }
             });
     }
 
@@ -66,7 +62,6 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         localStorage.removeItem('username');
-
     }
 
     isLoggedIn() {

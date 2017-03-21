@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {LocationStrategy,HashLocationStrategy} from '@angular/common' 
+import 'rxjs/Rx';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';

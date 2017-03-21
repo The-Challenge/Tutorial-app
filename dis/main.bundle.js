@@ -109,14 +109,11 @@ var UserprofileService = (function () {
         var ob = { username: username,
             TutorialID: TutorialID };
         // ob[username]=username
-        console.log('!!!!!!!!!!!!!!id &&& username', ob);
+        console.log('!!!!!!!!!!!!!!id &&& username', this.http);
         // localStorage.setItem('currentUser', JSON.stringify(user));
-        return this.http.put('/api/updateuser', ob).map(function (res) { return res.json(); });
-        //  return this.http.put('/api/updateuser', ob)
-        //         .map((response: Response) => {
-        //           console.log('hhhhhhhhhhhhhhhhhhhhhh')
-        //           response.json()})
-        //         .catch((error:any) => Observable.throw('Server error'));
+        // return this.http.put('/api/updateuser',ob).map(res => res.json())
+        return this.http.post('/api/updateuser', ob)
+            .map(function (response) { return response.json(); });
     };
     UserprofileService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(), 
@@ -402,16 +399,8 @@ var MainpageComponent = (function () {
         });
     };
     MainpageComponent.prototype.Sub = function (TutorialID) {
-        var _this = this;
         var username = JSON.parse(localStorage.getItem('username'));
-        this.userprofileService.addNewTutorial(TutorialID, username)
-            .subscribe(function (data) {
-            console.log('this.model.username!!!!!!!!!!!!!!!!!');
-            // this.router.navigate([this.returnUrl]);
-        }, function (error) {
-            _this.loading = false;
-            // this.router.navigate(['/Login']);
-        });
+        this.userprofileService.addNewTutorial(TutorialID, username);
         //  console.log(username)
         // console.log(model)
         // console.log(owner)
