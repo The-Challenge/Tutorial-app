@@ -192,7 +192,7 @@ var AppComponent = (function () {
         this.router = router;
         this.authenticationService = authenticationService;
         this.loginComponent = loginComponent;
-        this.title = { name: "tutorials", class: "A+", image: "123" };
+        this.title = 'title';
         this.curr = JSON.parse(localStorage.getItem('currentUser'));
     }
     AppComponent.prototype.logout = function () {
@@ -209,7 +209,7 @@ var AppComponent = (function () {
             selector: 'app-root',
             template: __webpack_require__(562),
             styles: [__webpack_require__(556)],
-            providers: [__WEBPACK_IMPORTED_MODULE_1__services_authentication_service__["a" /* AuthenticationService */], __WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */]]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* ActivatedRoute */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__services_authentication_service__["a" /* AuthenticationService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_authentication_service__["a" /* AuthenticationService */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */]) === 'function' && _d) || Object])
     ], AppComponent);

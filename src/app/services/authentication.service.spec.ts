@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { AuthenticationService } from './authentication.service';
+import {Http}  from '@angular/Http';
+describe('Service : AuthenticationService ', () => {
 
-describe('AuthenticationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthenticationService]
+      providers: [AuthenticationService,Http,
+      {provide : Http, useValue : AuthenticationService }]
     });
   });
 
@@ -13,3 +15,4 @@ describe('AuthenticationService', () => {
     expect(service).toBeTruthy();
   }));
 });
+  
