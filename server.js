@@ -8,7 +8,7 @@ require('./server/config/middleware.js')(app , express);
 require('./server/config/routes.js')(app , express);
 
 
-var port = 8000
+var port = 3000
 
  mongoose.Promise = global.Promise
  mongoose.connect('mongodb://localhost/tutorialsdb');
