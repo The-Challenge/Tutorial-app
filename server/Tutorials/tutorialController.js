@@ -32,24 +32,24 @@ module.exports ={
 				res.status(200).json(Alltutorialname)
 			}
 		})
-	},
+	}, 
 
 	AddCommit : function(req,res){
 		console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!update user',req.body)
-		console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!update user',req.body.commits)
+		console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!update user',req.body.comments)
 
 		Tutorial.findOne({_id:req.body._id},function (err,tutorial) {
 			// console.log("alllllllll",Allusers)
-			newCommits = req.body.commits
+			newComments = req.body.comments
 			if (err) {
 				res.status(500).send(err);
 			}else{
 				// console.log('in query user!!!!!!!',user.tutorials)
-				if(tutorial.commits.indexOf(req.body.commits) === -1){
+				if(tutorial.comments.indexOf(req.body.comments) === -1){
 					// console.log("@!!!!!!!!@user.tutorials",user.tutorials)
 					// console.log("@!!!!!!!!@req.body.TutorialID",req.body.TutorialID)
-					tutorial.commits.push(newCommits)
-					console.log("@!!!!!!!!@after puushing user.tutorials ",tutorial.commits)
+					tutorial.comments.push(newComments)
+					console.log("@!!!!!!!!@after puushing user.tutorials ",tutorial.comments)
 
 					// user.tutorials= arr
 					tutorial.save(function(err) {

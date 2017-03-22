@@ -25,7 +25,7 @@ var tutorialSchema = new mongoose.Schema({
 		type : String
 		
 	},
-	commits : [] 
+	comments : [] 
 });
 
 var tutorial = mongoose.model('tutorial', tutorialSchema);
