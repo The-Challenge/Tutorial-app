@@ -56,22 +56,11 @@ export class MainpageComponent implements OnInit {
    this.userprofileService.addNewTutorial(TutorialID,username)
    .subscribe(
                 data => {
-                    console.log('this.model.username!!!!!!!!!!!!!!!!!')
-                    // this.router.navigate([this.returnUrl]);
-                   
+                    console.log('mai page component data!!!!!!!!!!!!!!!!!',data)
                 },
                 error =>{
                     this.loading =false
-
-                    // this.router.navigate(['/Login']);
-
-
                 });
-
-  //  console.log(username)
-    // console.log(model)
-    // console.log(owner)
-    // console.log(this.Tutorials)
   }
 
 } 

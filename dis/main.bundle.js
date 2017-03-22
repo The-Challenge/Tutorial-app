@@ -109,11 +109,14 @@ var UserprofileService = (function () {
         var ob = { username: username,
             TutorialID: TutorialID };
         // ob[username]=username
-        console.log('!!!!!!!!!!!!!!id &&& username', this.http);
+        console.log('!!!!!!!!!!!!!!id &&& username', ob);
         // localStorage.setItem('currentUser', JSON.stringify(user));
-        // return this.http.put('/api/updateuser',ob).map(res => res.json())
-        return this.http.post('/api/updateuser', ob)
-            .map(function (response) { return response.json(); });
+        return this.http.put('/api/updateuser', ob).map(function (res) { return res.json(); });
+        //  return this.http.put('/api/updateuser', ob)
+        //         .map((response: Response) => {
+        //           console.log('hhhhhhhhhhhhhhhhhhhhhh')
+        //           response.json()})
+        //         .catch((error:any) => Observable.throw('Server error'));
     };
     UserprofileService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(), 
@@ -283,7 +286,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_11__userpage_userpage_component__["a" /* UserpageComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__mainpage_mainpage_component__["a" /* MainpageComponent */]
             ],
-            imports: [
+            imports: [__WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],
@@ -399,12 +402,14 @@ var MainpageComponent = (function () {
         });
     };
     MainpageComponent.prototype.Sub = function (TutorialID) {
+        var _this = this;
         var username = JSON.parse(localStorage.getItem('username'));
-        this.userprofileService.addNewTutorial(TutorialID, username);
-        //  console.log(username)
-        // console.log(model)
-        // console.log(owner)
-        // console.log(this.Tutorials)
+        this.userprofileService.addNewTutorial(TutorialID, username)
+            .subscribe(function (data) {
+            console.log('mai page component data!!!!!!!!!!!!!!!!!', data);
+        }, function (error) {
+            _this.loading = false;
+        });
     };
     MainpageComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
@@ -792,6 +797,7 @@ var AuthenticationService = (function () {
         });
     };
     AuthenticationService.prototype.signup = function (user) {
+        // localStorage.setItem('username', JSON.stringify(user.username));
         console.log('!!!!!!!!!!!!!!signup', User);
         // localStorage.setItem('currentUser', JSON.stringify(user));
         return this.http.post('/api/UserSignup', user, this.jwt()).map(function (response) {

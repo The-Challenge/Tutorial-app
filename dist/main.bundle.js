@@ -406,16 +406,10 @@ var MainpageComponent = (function () {
         var username = JSON.parse(localStorage.getItem('username'));
         this.userprofileService.addNewTutorial(TutorialID, username)
             .subscribe(function (data) {
-            console.log('this.model.username!!!!!!!!!!!!!!!!!');
-            // this.router.navigate([this.returnUrl]);
+            console.log('mai page component data!!!!!!!!!!!!!!!!!', data);
         }, function (error) {
             _this.loading = false;
-            // this.router.navigate(['/Login']);
         });
-        //  console.log(username)
-        // console.log(model)
-        // console.log(owner)
-        // console.log(this.Tutorials)
     };
     MainpageComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
@@ -803,6 +797,7 @@ var AuthenticationService = (function () {
         });
     };
     AuthenticationService.prototype.signup = function (user) {
+        // localStorage.setItem('username', JSON.stringify(user.username));
         console.log('!!!!!!!!!!!!!!signup', User);
         // localStorage.setItem('currentUser', JSON.stringify(user));
         return this.http.post('/api/UserSignup', user, this.jwt()).map(function (response) {
