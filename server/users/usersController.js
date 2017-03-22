@@ -95,15 +95,42 @@ module.exports ={
 		})
 	},
 	updateUser : function(req,res){
-		 console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!update user',req.body)
-		User.update({username: req.body.username}, req.body, function(err, values) {
+		console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!update user',req.body.username)
+		console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!update user',req.body.TutorialID)
 
-        	if (!err) {
-            	res.json("okay");
-        } else {
-            res.write("fail");
-        }
-    });
+		User.findOne({username:req.body.username},function (err,user) {
+			// console.log("alllllllll",Allusers)
+			newtutorial = req.body.TutorialID
+			if (err) {
+				res.status(500).send(err);
+			}else{
+				console.log('in query user!!!!!!!',user.tutorials)
+				if(user.tutorials.indexOf(req.body.TutorialID) === -1){
+					console.log("@!!!!!!!!@user.tutorials",user.tutorials)
+					console.log("@!!!!!!!!@req.body.TutorialID",req.body.TutorialID)
+					user.tutorials.push(newtutorial)
+					console.log("@!!!!!!!!@after puushing user.tutorials ",user.tutorials)
+
+					// user.tutorials= arr
+					user.save(function(err) {
+						if (err) throw err;
+						console.log('User successfully updated!');
+						});
+					res.status(200).json(user)
+				}else{
+					res.status(200).json('you already have this tutorial!!')
+				}
+			}
+		})
+
+	// 	User.update({username: req.body.username}, req.body, function(err, values) {
+
+    //     	if (!err) {
+    //         	res.json("okay");
+    //     } else {
+    //         res.write("fail");
+    //     }
+    // });
 
 
 	}
