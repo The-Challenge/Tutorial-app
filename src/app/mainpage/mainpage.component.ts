@@ -63,4 +63,16 @@ export class MainpageComponent implements OnInit {
                 });
   }
 
+//   Commits(ID,Commit){
+//     //   var username = JSON.parse(localStorage.getItem('username'))
+//    this.userprofileService.addNewTutorial(ID,Commit)
+//    .subscribe(
+//                 data => {
+//                     console.log('mai page component data!!!!!!!!!!!!!!!!!',data)
+//                 },
+//                 error =>{
+//                     this.loading =false
+//                 });
+//   }
+
 } 

@@ -11,6 +11,7 @@ module.exports = function (app, express) {
 	app.post('/api/user/', userController.insertUser) 
 
 	app.put('/api/updateuser', userController.updateUser) 
+	app.put('/api/Addcommit', tutorialController.AddCommit) 
 
 	app.get('/api/tutorials', tutorialController.getTutorials) 
 	app.get('/api/tutorials/:tutorialname', tutorialController.getTutorial)
