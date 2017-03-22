@@ -11,6 +11,8 @@ import { AuthenticationService } from '../services/authentication.service'
 import { UserprofileService } from '../services/userprofile.service'
 
 
+
+
 @Component({
   selector: 'app-mainpage',
   // declarations: [ LoginComponent ],
@@ -21,6 +23,7 @@ import { UserprofileService } from '../services/userprofile.service'
 //./mainpage.component.html
 export class MainpageComponent implements OnInit {
   loading = false;
+  public  text : any;
   public  Tutorials : any;
   // public looged
    checkToken = JSON.parse(localStorage.getItem('currentUser'));
@@ -31,7 +34,8 @@ export class MainpageComponent implements OnInit {
     private mainpageService: MainpageService,
     private authenticationService: AuthenticationService,
     public logincomponent : LoginComponent,
-    private userprofileService: UserprofileService
+    private userprofileService: UserprofileService,
+   
 
   ) {}
 
@@ -60,6 +64,20 @@ export class MainpageComponent implements OnInit {
                 },
                 error =>{
                     this.loading =false
+                });
+  }
+
+AddComment(TutorialID,TutorialComment){
+    console.log(TutorialID,TutorialComment)
+//    var username = JSON.parse(localStorage.getItem('username'))
+   this.mainpageService.addNewComment(TutorialID,TutorialComment)
+   .subscribe(
+                data => {
+                    console.log('mai page component data!!!!!!!!!!!!!!!!!',data)
+                },
+                error =>{
+                    this.loading =false
+                    console.log('mai page component data!!!!!!!!!!!!!!!!!',error)
                 });
   }
 

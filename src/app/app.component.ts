@@ -7,11 +7,11 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-    providers: [LoginComponent]
+    providers: [AuthenticationService,LoginComponent]
 
 })
 export class AppComponent implements OnInit {
-  title = 'title';
+  title = {name:"tutorials",class:"A+",image:"123"};
   curr = JSON.parse(localStorage.getItem('currentUser'));
     
 

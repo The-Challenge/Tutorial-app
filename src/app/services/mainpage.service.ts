@@ -28,4 +28,14 @@ export class MainpageService {
         return this.http.get('/api/tutorials').map((response: Response) => response.json());
     }
 
+ addNewComment(TutorialID,TutorialComment){
+     let ob={_id:TutorialID,
+    comments:TutorialComment}
+    // ob[username]=username
+
+    console.log('!!!!!!!!!!!!!!id &&& username',ob)
+    // localStorage.setItem('currentUser', JSON.stringify(user));
+    return this.http.put('/api/Addcommit',ob).map(res => res.json())
+ }
+
 }

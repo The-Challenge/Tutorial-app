@@ -1,18 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing'
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute, Params ,RouterModule,RouterOutlet} from '@angular/router';
-import { AuthenticationService } from './services/authentication.service' 
-import { LoginComponent  } from './login/login.component'
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent,
+      imports:[RouterTestingModule],
+      declarations: [
         AppComponent,
-      ],imports :[RouterTestingModule] ,
-      providers: [AppComponent,AuthenticationService]
+        {provide:Router},
+        RouterOutlet
+      ],
+      providers: [AppComponent,]
     }).compileComponents();
   }));
 
