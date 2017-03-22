@@ -14,8 +14,8 @@ var userSchema = new mongoose.Schema({
 	password : {
 		type : String,
 		required : true
-	}
-	// tutoridals : Array
+	},
+	tutorials : []
 });
 
 var user = mongoose.model('user', userSchema);

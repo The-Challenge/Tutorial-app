@@ -45,7 +45,7 @@ export class AuthenticationService {
 
 
     signup(user: User) {
-
+        // localStorage.setItem('username', JSON.stringify(user.username));
         console.log('!!!!!!!!!!!!!!signup',User)
         // localStorage.setItem('currentUser', JSON.stringify(user));
         return this.http.post('/api/UserSignup', user, this.jwt()).map((response: Response) =>{
