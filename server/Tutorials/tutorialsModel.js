@@ -24,7 +24,8 @@ var tutorialSchema = new mongoose.Schema({
     image : {
 		type : String
 		
-	}     
+	},
+	comments : [] 
 });
 
 var tutorial = mongoose.model('tutorial', tutorialSchema);

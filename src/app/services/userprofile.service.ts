@@ -32,8 +32,9 @@ export class UserprofileService {
   }
   
    getUserTutorial(TutorialID){
+     console.log('userprofile service getusertutorial',TutorialID)
     console.log('userprofile service',TutorialID)
-    return this.http.get('/api/userprofile/' + TutorialID).map(res => res.json())
+    return this.http.get('/api/tutorial/' + TutorialID).map(res => res.json())
   }
 
 }
