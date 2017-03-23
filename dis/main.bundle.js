@@ -54,6 +54,7 @@ var LoginComponent = (function () {
             // this.router.navigate([this.returnUrl]);
             _this.router.navigate(['userprofile/' + _this.model.username]);
             // console.log('kmalll')
+            location.reload();
         }, function (error) {
             _this.loading = false;
             _this.router.navigate(['/Login']);
@@ -129,7 +130,55 @@ var UserprofileService = (function () {
 
 /***/ }),
 
-/***/ 377:
+/***/ 337:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainpageService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var Tutorial = (function () {
+    function Tutorial() {
+    }
+    return Tutorial;
+}());
+var MainpageService = (function () {
+    function MainpageService(http) {
+        this.http = http;
+    }
+    MainpageService.prototype.create = function (tutorial) {
+        console.log('!!!!!!!!!!!!!!create', tutorial);
+        return this.http.post('/api/tutorial', tutorial).map(function (response) { return response.json(); });
+    };
+    MainpageService.prototype.gettutorials = function () {
+        return this.http.get('/api/tutorials').map(function (response) { return response.json(); });
+    };
+    MainpageService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
+    ], MainpageService);
+    return MainpageService;
+    var _a;
+}());
+//# sourceMappingURL=mainpage.service.js.map
+
+/***/ }),
+
+/***/ 378:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -138,19 +187,19 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 377;
+webpackEmptyContext.id = 378;
 
 
 /***/ }),
 
-/***/ 378:
+/***/ 379:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(496);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(466);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(497);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(502);
 
 
@@ -164,7 +213,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 495:
+/***/ 496:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -200,6 +249,7 @@ var AppComponent = (function () {
         // console.log(this.loginComponent.looged=false)
         this.authenticationService.logout();
         this.router.navigate(['main/']);
+        location.reload();
     };
     AppComponent.prototype.ngOnInit = function () {
         this.curr;
@@ -220,24 +270,24 @@ var AppComponent = (function () {
 
 /***/ }),
 
-/***/ 496:
+/***/ 497:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(457);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Rx__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Rx__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(495);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(496);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__login_login_component__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__signup_signup_component__ = __webpack_require__(500);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mainpage_mainpage_component__ = __webpack_require__(498);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mainpage_mainpage_component__ = __webpack_require__(499);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__userpage_userpage_component__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__guard_guard__ = __webpack_require__(497);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__guard_guard__ = __webpack_require__(498);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_authentication_service__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_userprofile_service__ = __webpack_require__(154);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
@@ -303,7 +353,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 497:
+/***/ 498:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -340,7 +390,7 @@ var GuardGuard = (function () {
 
 /***/ }),
 
-/***/ 498:
+/***/ 499:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -348,10 +398,10 @@ var GuardGuard = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_mainpage_service__ = __webpack_require__(499);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_mainpage_service__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__login_login_component__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_authentication_service__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_userprofile_service__ = __webpack_require__(154);
@@ -428,54 +478,6 @@ var MainpageComponent = (function () {
 
 /***/ }),
 
-/***/ 499:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainpageService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var Tutorial = (function () {
-    function Tutorial() {
-    }
-    return Tutorial;
-}());
-var MainpageService = (function () {
-    function MainpageService(http) {
-        this.http = http;
-    }
-    MainpageService.prototype.create = function (tutorial) {
-        console.log('!!!!!!!!!!!!!!create', tutorial);
-        return this.http.post('/api/tutorial', tutorial).map(function (response) { return response.json(); });
-    };
-    MainpageService.prototype.gettutorials = function () {
-        return this.http.get('/api/tutorials').map(function (response) { return response.json(); });
-    };
-    MainpageService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
-    ], MainpageService);
-    return MainpageService;
-    var _a;
-}());
-//# sourceMappingURL=mainpage.service.js.map
-
-/***/ }),
-
 /***/ 500:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -541,6 +543,7 @@ var SignupComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_userprofile_service__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_authentication_service__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login_component__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_mainpage_service__ = __webpack_require__(337);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserpageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -556,43 +559,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var UserpageComponent = (function () {
-    function UserpageComponent(route, router, userprofileService, authenticationService, loginComponent) {
+    function UserpageComponent(route, router, mainpageService, userprofileService, authenticationService, loginComponent) {
         this.route = route;
         this.router = router;
+        this.mainpageService = mainpageService;
         this.userprofileService = userprofileService;
         this.authenticationService = authenticationService;
         this.loginComponent = loginComponent;
         this.model = {};
     }
     UserpageComponent.prototype.ngOnInit = function () {
-        // if(this.loginComponent.looged!==true){
-        //       this.router.navigate(['/']);
-        // }  
-        // this.storage = this.route.queryParams.subscribe(params =>{
-        //   // console.log('@@@@@@@userpage//params',params)
-        //   let username =params['username'];
-        //   // console.log('@@@@@@@userpage//username',username)
-        //   this.userprofileService.getProfile(username)
-        // })
+        //  var username = JSON.parse(localStorage.getItem('username'))
+        //  this.mainpageService.gettutorials()
+        //   .subscribe(
+        //       data => {
+        //           this.Tutorials = data;
+        //       },
+        //       error => {
+        //         console.log(error)
+        //       });
     };
     UserpageComponent.prototype.logout = function () {
         this.loginComponent.looged = false;
         // console.log(this.loginComponent.looged=false)
         this.authenticationService.logout();
         this.router.navigate(['main/']);
+        location.reload();
     };
     UserpageComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
             selector: 'app-userpage',
             template: __webpack_require__(566),
             styles: [__webpack_require__(560)],
-            providers: [__WEBPACK_IMPORTED_MODULE_2__services_userprofile_service__["a" /* UserprofileService */], __WEBPACK_IMPORTED_MODULE_3__services_authentication_service__["a" /* AuthenticationService */], __WEBPACK_IMPORTED_MODULE_4__login_login_component__["a" /* LoginComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_2__services_userprofile_service__["a" /* UserprofileService */], __WEBPACK_IMPORTED_MODULE_3__services_authentication_service__["a" /* AuthenticationService */], __WEBPACK_IMPORTED_MODULE_4__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_5__services_mainpage_service__["a" /* MainpageService */]]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_userprofile_service__["a" /* UserprofileService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_userprofile_service__["a" /* UserprofileService */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__services_authentication_service__["a" /* AuthenticationService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__services_authentication_service__["a" /* AuthenticationService */]) === 'function' && _d) || Object, (typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__login_login_component__["a" /* LoginComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__login_login_component__["a" /* LoginComponent */]) === 'function' && _e) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__services_mainpage_service__["a" /* MainpageService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_5__services_mainpage_service__["a" /* MainpageService */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__services_userprofile_service__["a" /* UserprofileService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_userprofile_service__["a" /* UserprofileService */]) === 'function' && _d) || Object, (typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__services_authentication_service__["a" /* AuthenticationService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__services_authentication_service__["a" /* AuthenticationService */]) === 'function' && _e) || Object, (typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__login_login_component__["a" /* LoginComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__login_login_component__["a" /* LoginComponent */]) === 'function' && _f) || Object])
     ], UserpageComponent);
     return UserpageComponent;
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f;
 }());
 //# sourceMappingURL=userpage.component.js.map
 
@@ -707,7 +713,7 @@ module.exports = module.exports.toString();
 /***/ 562:
 /***/ (function(module, exports) {
 
-module.exports = "<!-- main app container -->\n\n<!-- Navbar -->\n\n<div class=\"w3-top\">\n <div class=\"w3-bar w3-theme-d2 w3-left-align\">\n  <a class=\"w3-bar-item w3-button w3-hide-medium w3-hide-large w3-opennav w3-right w3-hover-white w3-theme-d2\" href=\"javascript:void(0);\" onclick=\"openNav()\"><i class=\"fa fa-bars\"></i></a>\n  <a  class=\"w3-bar-item w3-button w3-teal\"><i class=\"fa fa-home w3-margin-right\"></i>Logo</a>\n  <a href=\"#team\" class=\"w3-bar-item w3-button w3-hide-small w3-hover-white\">Team</a>\n  <a href=\"#work\" class=\"w3-bar-item w3-button w3-hide-small w3-hover-white\">Work</a>\n  <a href=\"#pricing\" class=\"w3-bar-item w3-button w3-hide-small w3-hover-white\">Price</a>\n  <a href=\"#contact\" class=\"w3-bar-item w3-button w3-hide-small w3-hover-white\">Contact</a>\n    <div class=\"w3-dropdown-hover w3-hide-small\">\n    <button class=\"w3-button\" title=\"Notifications\">Dropdown <i class=\"fa fa-caret-down\"></i></button>     \n    <div class=\"w3-dropdown-content w3-card-4 w3-bar-block\">\n      <a href=\"#\" class=\"w3-bar-item w3-button\">Link</a>\n      <a href=\"#\" class=\"w3-bar-item w3-button\">Link</a>\n      <a href=\"#\" class=\"w3-bar-item w3-button\">Link</a>\n    </div>\n  </div>\n\n  <a  [routerLink]=\"['/Login']\" class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Login</a>\n  <a [hidden]=\"!curr\" [routerLink]=\"['/Signup']\" class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Signup</a>\n  <a *ngIf=\"curr\" (click)=\"logout()\" [routerLink]=\"['/']\" class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Logout</a>\n\n  <a href=\"#\" class=\"w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal\" title=\"Search\"><i class=\"fa fa-search\"></i></a>\n </div>\n</div>\n\n\n\n<router-outlet></router-outlet>\n"
+module.exports = "<!-- main app container -->\n\n<!-- Navbar -->\n\n<div class=\"w3-top\">\n <div class=\"w3-bar w3-theme-d2 w3-left-align\">\n  <a class=\"w3-bar-item w3-button w3-hide-medium w3-hide-large w3-opennav w3-right w3-hover-white w3-theme-d2\" href=\"javascript:void(0);\" onclick=\"openNav()\"><i class=\"fa fa-bars\"></i></a>\n  <a  class=\"w3-bar-item w3-button w3-teal\"><i class=\"fa fa-home w3-margin-right\"></i>Logo</a>\n  <a href=\"#team\" class=\"w3-bar-item w3-button w3-hide-small w3-hover-white\">Main Page</a>\n  <a  [routerLink]=\"['/userprofile/Myprofile']\" class=\"w3-bar-item w3-button w3-hide-small w3-hover-white\">My profile</a>\n  <a href=\"#pricing\" class=\"w3-bar-item w3-button w3-hide-small w3-hover-white\">Price</a>\n  <a href=\"#contact\" class=\"w3-bar-item w3-button w3-hide-small w3-hover-white\">Contact</a>\n    <div class=\"w3-dropdown-hover w3-hide-small\">\n    <button class=\"w3-button\" title=\"Notifications\">Dropdown <i class=\"fa fa-caret-down\"></i></button>     \n    <div class=\"w3-dropdown-content w3-card-4 w3-bar-block\">\n      <a href=\"#\" class=\"w3-bar-item w3-button\">Link</a>\n      <a href=\"#\" class=\"w3-bar-item w3-button\">Link</a>\n      <a href=\"#\" class=\"w3-bar-item w3-button\">Link</a>\n    </div>\n  </div>\n\n  <a  [routerLink]=\"['/Login']\" class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Login</a>\n  <a [hidden]=\"!curr\" [routerLink]=\"['/Signup']\" class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Signup</a>\n  <a *ngIf=\"curr\" (click)=\"logout()\" [routerLink]=\"['/']\" class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Logout</a>\n\n  <a href=\"#\" class=\"w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal\" title=\"Search\"><i class=\"fa fa-search\"></i></a>\n </div>\n</div>\n\n\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -735,7 +741,7 @@ module.exports = "  \n\n<div class=\"col-md-6 col-md-offset-3\">\n<div class=\"w
 /***/ 566:
 /***/ (function(module, exports) {
 
-module.exports = "\n<!--<div class=\"w3-top\">\n <div class=\"w3-bar w3-theme-d2 w3-left-align\">\n  <a (click)=\"logout()\" routerLink='/' class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Logout</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal\" title=\"Search\"><i class=\"fa fa-search\"></i></a>\n </div>\n</div>-->\n\n\n\n<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n  <!-- Indicators -->\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\" role=\"listbox\">\n    <div class=\"item active\">\n      <img class=\"first-slide\" src=\"../../assets/images/image4.jpg\" alt=\"First slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"second-slide\" src=\"../../assets/images/image2.jpg\" alt=\"Second slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"third-slide\" src=\"../../assets/images/image3.jpg\" alt=\"Third slide\">\n        </div>\n      </div>\n      <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\n        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\n        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div><!-- /.carousel -->\n\n\n<h1>{{ id }}</h1>\n"
+module.exports = "\n<!--<div class=\"w3-top\">\n <div class=\"w3-bar w3-theme-d2 w3-left-align\">\n  <a (click)=\"logout()\" routerLink='/' class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Logout</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal\" title=\"Search\"><i class=\"fa fa-search\"></i></a>\n </div>\n</div>-->\n\n\n\n<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n  <!-- Indicators -->\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\" role=\"listbox\">\n    <div class=\"item active\">\n      <img class=\"first-slide\" src=\"../../assets/images/image4.jpg\" alt=\"First slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"second-slide\" src=\"../../assets/images/image2.jpg\" alt=\"Second slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"third-slide\" src=\"../../assets/images/image3.jpg\" alt=\"Third slide\">\n        </div>\n      </div>\n      <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\n        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\n        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div><!-- /.carousel -->\n\n\n\n\n<div class=\"w3-row-padding w3-center w3-padding-64\" id=\"pricing\">\n    <h2>My courses</h2>\n    <!--<p>Choose a pricing plan that fits your needs.</p><br>-->\n    \n   <div *ngFor=\"let Tutorial of Tutorials\"> \n    <div class=\"w3-third w3-margin-bottom\">\n      <ul class=\"w3-ul w3-border w3-hover-shadow\">\n        <li class=\"w3-theme\">\n          <img class=\"first-slide\" src={{Tutorial.image}} style=\"width:100%;min-height:350px;max-height:600px;\">\n          <p class=\"w3-xlarge\">{{Tutorial.tutorialname}}</p>\n        </li>\n        <li class=\"w3-padding-6\"><b>By: {{Tutorial.ownername}}</b> </li>\n        <li class=\"w3-padding-6\"><b>Description: {{Tutorial.description}}</b></li>\n        <li class=\"w3-padding-6\"><b>Duration: {{Tutorial.duration}}</b> </li>\n        <li class=\"w3-padding-6\"><b>{{Tutorial.users}}</b> </li>\n        <li class=\"w3-padding-6\">\n          <h2 class=\"w3-wide\"><i></i></h2>\n          <span class=\"w3-opacity\">{{Tutorial.tutorialname}}</span>\n        </li>\n        <li class=\"w3-theme-l5 w3-padding-12\">\n          <button *ngIf=\"checkToken\" (click)=\"Sub(Tutorial._id)\"  class=\"w3-button w3-teal w3-padding-large\"><i class=\"fa fa-check\"></i> Subscribe</button>\n        </li>\n      </ul>\n    </div>\n   </div> \n</div> "
 
 /***/ }),
 
@@ -832,7 +838,7 @@ var AuthenticationService = (function () {
 /***/ 832:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(378);
+module.exports = __webpack_require__(379);
 
 
 /***/ })

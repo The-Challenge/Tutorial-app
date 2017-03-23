@@ -29,6 +29,12 @@ export class UserprofileService {
     //           response.json()})
     //         .catch((error:any) => Observable.throw('Server error'));
 
-    }
+  }
+  
+   getUserTutorial(TutorialID){
+     console.log('userprofile service getusertutorial',TutorialID)
+    console.log('userprofile service',TutorialID)
+    return this.http.get('/api/tutorial/' + TutorialID).map(res => res.json())
+  }
 
 }

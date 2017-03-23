@@ -15,6 +15,11 @@ module.exports = function (app, express) {
 
 	app.get('/api/tutorials', tutorialController.getTutorials) 
 	app.get('/api/tutorials/:tutorialname', tutorialController.getTutorial)
-	app.get('/api/user/:name', userController.getUser)
+	app.get('/api/tutorial/:tutorialID', tutorialController.getUserTutorial)
+
+	// app.get('/api/GetUserByUsername', userController.getUser)
+	app.post('/api/GetUserTutorials', userController.GetUserTutorials)
+
+
 	
 };

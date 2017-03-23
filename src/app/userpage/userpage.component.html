@@ -37,4 +37,31 @@
     </div><!-- /.carousel -->
 
 
-<h1>{{ id }}</h1>
+
+
+<div class="w3-row-padding w3-center w3-padding-64" id="pricing">
+    <h2>My courses</h2>
+    <!--<p>Choose a pricing plan that fits your needs.</p><br>-->
+    
+   <div *ngFor="let Tutorial of Tutorials"> 
+    <div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme">
+          <img class="first-slide" src={{Tutorial.image}} style="width:100%;min-height:350px;max-height:600px;">
+          <p class="w3-xlarge">{{Tutorial.tutorialname}}</p>
+        </li>
+        <li class="w3-padding-6"><b>By: {{Tutorial.ownername}}</b> </li>
+        <li class="w3-padding-6"><b>Description: {{Tutorial.description}}</b></li>
+        <li class="w3-padding-6"><b>Duration: {{Tutorial.duration}}</b> </li>
+        <li class="w3-padding-6"><b>{{Tutorial.users}}</b> </li>
+        <li class="w3-padding-6">
+          <h2 class="w3-wide"><i></i></h2>
+          <span class="w3-opacity">{{Tutorial.tutorialname}}</span>
+        </li>
+        <li class="w3-theme-l5 w3-padding-12">
+          <button *ngIf="checkToken" (click)="Sub(Tutorial._id)"  class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Subscribe</button>
+        </li>
+      </ul>
+    </div>
+   </div> 
+</div> 

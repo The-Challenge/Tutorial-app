@@ -40,22 +40,23 @@ export class MainpageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
     // console.log('!!!!!!!!!!!!!!mainpage',checkToken);
-                  console.log('looged',this.logincomponent.looged)
+    console.log('looged',this.logincomponent.looged)
     this.loading = true;
-        this.mainpageService.gettutorials()
-            .subscribe(
-                data => {
-                  this.Tutorials = data;
-                   // this.router.navigate(['/login']);
-                },
-                error => {
-                    this.loading = false;
-                });
+    this.mainpageService.gettutorials()
+    .subscribe(
+
+        data => {
+            this.Tutorials = data;
+            // this.router.navigate(['/login']);
+        },
+        error => {
+            this.loading = false;
+        });
   }
 
   Sub(TutorialID){
+   localStorage.setItem('TutorialID', JSON.stringify(TutorialID));
    var username = JSON.parse(localStorage.getItem('username'))
    this.userprofileService.addNewTutorial(TutorialID,username)
    .subscribe(
