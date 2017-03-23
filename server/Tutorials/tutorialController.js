@@ -24,7 +24,8 @@ module.exports ={
 	},
 
 	getTutorial : function (req, res) {
-		Tutorial.findOne({tutorialname:req.body.tutorialname},function (err,Alltutorialname) {
+		console.log('paraaaammmmms',req.params)
+		Tutorial.findOne({tutorialname:req.params.tutorialname},function (err,Alltutorialname) {
 			// console.log("alllllllll",Alltutorialname)
 			if (err) {
 				res.status(500).send(err);
@@ -32,6 +33,20 @@ module.exports ={
 				res.status(200).json(Alltutorialname)
 			}
 		})
-	}
+	},
+
+getUserTutorial : function(req,res){
+	console.log('paaraaaams!!!!!!',req.params.tutorialID)
+	Tutorial.findOne({_id:req.params.tutorialID},function (err,Alltutorialname) {
+			// console.log("alllllllll",Alltutorialname)
+			if (err) {
+				res.status(500).send(err);
+			}else{
+				res.status(200).json(Alltutorialname)
+			}
+		})
+
+}
+
 }
 

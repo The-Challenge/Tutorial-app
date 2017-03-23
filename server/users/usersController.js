@@ -1,4 +1,6 @@
 var User = require('./usersModel.js')
+var Tutorial = require('../Tutorials/tutorialsModel.js')
+
 var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt-nodejs');
 
@@ -18,6 +20,45 @@ var comparePass=function(pass,hash,callback){
     	callback(res);
     });
 };
+
+	var gettu = function(user){
+			let arr=[]
+			let answer 
+			// let tutorials = user.tutorials
+				// for(var i=0;i< tutorials.length;i++){
+				
+					 Tutorial.findOne({_id:user},function (err,tutorial) {
+						// console.log("inside loooooooooooooooooooop loooool",tutorial)
+						if (err) {
+							res.status(500).send(err);
+						}
+						else{
+							arr.push(tutorial)
+							//return tutorial
+							// arr.push(tutorial)
+							// if(i===tutorials.length-1){
+							// 	console.log('in ifffffffffffffff',arr)
+							// res.status(200).json(arr)
+							// }
+						}
+					})
+					
+					.then(function(data){
+
+						console.log('%%%%%%%%%%%%%%%%%',data)
+						answer = data
+					}).then(function(){
+
+					console.log(answer)
+					return answer
+					}
+
+					)
+				// console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!',arr)
+			// }
+		
+	}
+
 
 module.exports ={
 	userSignup:function (req,res) {
@@ -85,12 +126,12 @@ module.exports ={
 		})
 	},
 	getUser : function (req, res) {
-		User.findOne({name:req.body.name},function (err,Allusers) {
-			// console.log("alllllllll",Allusers)
+		User.findOne({username:req.body.name},function (err,user) {
+			// console.log("alllllllll",user)
 			if (err) {
 				res.status(500).send(err);
 			}else{
-				res.status(200).json(Allusers)
+				res.status(200).json(user)
 			}
 		})
 	},
@@ -122,28 +163,69 @@ module.exports ={
 				}
 			}
 		})
+	},
+	GetUserTutorials : function(req,res){
+		// console.log('get userrrrrrrrrrrrrr tutorialssss',req.body)
+		var arr = []
+		var counter=0;
+		// var count=0;
 
-	// 	User.update({username: req.body.username}, req.body, function(err, values) {
+		User.findOne({username:req.body.username},function (err,user) {
+			// console.log('666666666666666666',user.tutorials)
+			if (err) {
+				res.status(500).send(err);
+			}else{
+				let tutorials = user.tutorials
+				// test = tutorials.forEach(tut => {
+				// 	 return (gettu(tut))
+				// 	// console.log('wtf mate', arr)
+				// })
+				for(let i=0;i< tutorials.length;i++){
+					// console.log("#######################",(gettu(tutorials[i])))
+					 gettu(tutorials[i],function(data){
+					 arr.push(data)
+					 console.log("dfghjk,l.;/",data)
+					})
+					if(counter === tutorials.length-2){
+						console.log("helllllllllllllo",arr)
+						res.json(arr);
+					}
+					counter++;
+				// 	//setTimeout(function() {
+						
+				// 	console.log("!!!!!!!!!!!!!!!!!!!!!",arr)
+				// 	// }, 4000);
+				// /////
+				// }
+			}
+			}
 
-    //     	if (!err) {
-    //         	res.json("okay");
-    //     } else {
-    //         res.write("fail");
-    //     }
-    // });
+		})
 
+				// console.log('!!!!!!!!@@@@@!@!@!@!@!@!@!@!@',arr)
 
 	}
+
+
 }
 
 
-//get all the users controller
-	// getAllUsers : function (req, res) {
-	// 	user.find({name:req.body.name},function (err,Allusers) {
-	// 		if (err) {
-	// 			res.status(500).send(err);
-	// 		}else{
-	// 			res.json(Allusers)
-	// 		}
-	// 	})
-	// },
+
+ //  tutorials.forEach(function(tutorial){
+
+//               Tutorial.findOne({_id:tutorial},function (err,tutorial) {
+// 						// console.log("inside loooooooooooooooooooop loooool",tutorial)
+// 						if (err) {
+// 							res.status(500).send(err);
+// 						}
+// 						else{
+// 							arr.push(tutorial)
+// 							console.log('!!!!!!!!!!!!why you return empty array (>_<) !!!!! ',arr)
+// 							// res.status(200).json(toturial)
+// 							// if(count===tutorials.length-1){
+// 							// 	res.status(200).json(arr)
+
+// 							// }
+// 						}
+// 					})
+//             })

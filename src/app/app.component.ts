@@ -27,7 +27,10 @@ export class AppComponent implements OnInit {
     this.loginComponent.looged=false
     // console.log(this.loginComponent.looged=false)
     this.authenticationService.logout()
-    this.router.navigate(['main/']);
+    this.router.navigate(['main/'])
+    location.reload();
+
+
   }
 
   ngOnInit() {

@@ -52,6 +52,8 @@ export class LoginComponent implements OnInit {
                     // this.router.navigate([this.returnUrl]);
                     this.router.navigate(['userprofile/'+ this.model.username]);
                     // console.log('kmalll')
+                      location.reload();
+
                 },
                 error =>{
                     this.loading =false
