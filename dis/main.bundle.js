@@ -119,6 +119,11 @@ var UserprofileService = (function () {
         //           response.json()})
         //         .catch((error:any) => Observable.throw('Server error'));
     };
+    UserprofileService.prototype.getUserTutorial = function (TutorialID) {
+        console.log('userprofile service getusertutorial', TutorialID);
+        console.log('userprofile service', TutorialID);
+        return this.http.get('/api/tutorial/' + TutorialID).map(function (res) { return res.json(); });
+    };
     UserprofileService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
@@ -166,6 +171,14 @@ var MainpageService = (function () {
     };
     MainpageService.prototype.gettutorials = function () {
         return this.http.get('/api/tutorials').map(function (response) { return response.json(); });
+    };
+    MainpageService.prototype.addNewComment = function (TutorialID, TutorialComment) {
+        var ob = { _id: TutorialID,
+            comments: TutorialComment };
+        // ob[username]=username
+        console.log('!!!!!!!!!!!!!!id &&& username', ob);
+        // localStorage.setItem('currentUser', JSON.stringify(user));
+        return this.http.put('/api/Addcommit', ob).map(function (res) { return res.json(); });
     };
     MainpageService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(), 
@@ -453,12 +466,25 @@ var MainpageComponent = (function () {
     };
     MainpageComponent.prototype.Sub = function (TutorialID) {
         var _this = this;
+        localStorage.setItem('TutorialID', JSON.stringify(TutorialID));
         var username = JSON.parse(localStorage.getItem('username'));
         this.userprofileService.addNewTutorial(TutorialID, username)
             .subscribe(function (data) {
             console.log('mai page component data!!!!!!!!!!!!!!!!!', data);
         }, function (error) {
             _this.loading = false;
+        });
+    };
+    MainpageComponent.prototype.AddComment = function (TutorialID, TutorialComment) {
+        var _this = this;
+        console.log(TutorialID, TutorialComment);
+        //    var username = JSON.parse(localStorage.getItem('username'))
+        this.mainpageService.addNewComment(TutorialID, TutorialComment)
+            .subscribe(function (data) {
+            console.log('mai page component data!!!!!!!!!!!!!!!!!', data);
+        }, function (error) {
+            _this.loading = false;
+            console.log('mai page component data!!!!!!!!!!!!!!!!!', error);
         });
     };
     MainpageComponent = __decorate([
@@ -571,15 +597,14 @@ var UserpageComponent = (function () {
         this.model = {};
     }
     UserpageComponent.prototype.ngOnInit = function () {
-        //  var username = JSON.parse(localStorage.getItem('username'))
-        //  this.mainpageService.gettutorials()
-        //   .subscribe(
-        //       data => {
-        //           this.Tutorials = data;
-        //       },
-        //       error => {
-        //         console.log(error)
-        //       });
+        var TutorialID = JSON.parse(localStorage.getItem('TutorialID'));
+        // this.userprofileService.getUserTutorial(TutorialID)
+        //  .subscribe(
+        //               data => {
+        //                   console.log('mai page component data!!!!!!!!!!!!!!!!!',data)
+        //               },
+        //               error =>{
+        //               });
     };
     UserpageComponent.prototype.logout = function () {
         this.loginComponent.looged = false;
@@ -628,7 +653,7 @@ exports = module.exports = __webpack_require__(64)();
 
 
 // module
-exports.push([module.i, "a {\r\n    cursor: pointer;\r\n}\r\n\r\n.help-block {\r\n    font-size: 12px;\r\n}", ""]);
+exports.push([module.i, "a {\n    cursor: pointer;\n}\n\n.help-block {\n    font-size: 12px;\n}", ""]);
 
 // exports
 
@@ -727,7 +752,7 @@ module.exports = "\n\n<div class=\"col-md-6 col-md-offset-3\">\n<div class=\"w3-
 /***/ 564:
 /***/ (function(module, exports) {
 
-module.exports = "\n<!-- Image Header -->\n<div class=\"w3-display-container w3-animate-opacity\">\n  <img src=\"../../assets/images/image6.jpg\" alt=\"\" style=\"width:100%;min-height:350px;max-height:600px;\">\n  <div class=\"w3-container w3-display-bottomleft w3-margin-bottom\">  \n    <button onclick=\"document.getElementById('id01').style.display='block'\" class=\"w3-button w3-xlarge w3-theme w3-hover-teal\" title=\"Go To W3.CSS\">BE THE BEST</button>\n  </div>\n</div>\n\n<!-- Sidebar on click -->\n<nav class=\"w3-sidebar w3-bar-block w3-white w3-card-2 w3-animate-left w3-xxlarge\" style=\"display:none;z-index:2\" id=\"mySidebar\">\n  <a href=\"javascript:void(0)\" onclick=\"w3_close()\" class=\"w3-bar-item w3-button w3-closenav w3-text-teal\">Close\n    <i class=\"fa fa-remove\"></i>\n  </a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">My profile</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">Link 2</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">Link 3</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">Link 4</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">Link 5</a>\n</nav>\n\n\n<!-- Pricing Row -->\n<div class=\"w3-row-padding w3-center w3-padding-64\" id=\"pricing\">\n    <h2>PRICING</h2>\n    <p>Choose a pricing plan that fits your needs.</p><br>\n   <div *ngFor=\"let Tutorial of Tutorials\"> \n    <div class=\"w3-third w3-margin-bottom\">\n      <ul class=\"w3-ul w3-border w3-hover-shadow\">\n        <li class=\"w3-theme\">\n          <img class=\"first-slide\" src={{Tutorial.image}} style=\"width:100%;min-height:350px;max-height:600px;\">\n          <p class=\"w3-xlarge\">{{Tutorial.tutorialname}}</p>\n        </li>\n        <li class=\"w3-padding-6\"><b>By: {{Tutorial.ownername}}</b> </li>\n        <li class=\"w3-padding-6\"><b>Description: {{Tutorial.description}}</b></li>\n        <li class=\"w3-padding-6\"><b>Duration: {{Tutorial.duration}}</b> </li>\n        <li class=\"w3-padding-6\"><b>{{Tutorial.users}}</b> </li>\n        <li class=\"w3-padding-6\">\n          <h2 class=\"w3-wide\"><i></i></h2>\n          <span class=\"w3-opacity\">{{Tutorial.tutorialname}}</span>\n        </li>\n        <li class=\"w3-theme-l5 w3-padding-12\">\n          <button *ngIf=\"checkToken\" (click)=\"Sub(Tutorial._id)\"  class=\"w3-button w3-teal w3-padding-large\"><i class=\"fa fa-check\"></i> Subscribe</button>\n        </li>\n      </ul>\n    </div>\n   </div> \n</div> \n\n\n\n\n\n<!-- Carousel -->\n<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n  <!-- Indicators -->\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\" role=\"listbox\">\n    <div class=\"item active\">\n      <img class=\"first-slide\" src=\"../../assets/images/image4.jpg\" alt=\"First slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"second-slide\" src=\"../../assets/images/image2.jpg\" alt=\"Second slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"third-slide\" src=\"../../assets/images/image3.jpg\" alt=\"Third slide\">\n        </div>\n      </div>\n      <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\n        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\n        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div><!-- /.carousel -->\n\n"
+module.exports = "\n<!-- Image Header -->\n<div class=\"w3-display-container w3-animate-opacity\">\n  <img src=\"../../assets/images/image6.jpg\" alt=\"\" style=\"width:100%;min-height:350px;max-height:600px;\">\n  <div class=\"w3-container w3-display-bottomleft w3-margin-bottom\">  \n    <button onclick=\"document.getElementById('id01').style.display='block'\" class=\"w3-button w3-xlarge w3-theme w3-hover-teal\" title=\"Go To W3.CSS\">BE THE BEST</button>\n  </div>\n</div>\n\n<!-- Sidebar on click -->\n<nav class=\"w3-sidebar w3-bar-block w3-white w3-card-2 w3-animate-left w3-xxlarge\" style=\"display:none;z-index:2\" id=\"mySidebar\">\n  <a href=\"javascript:void(0)\" onclick=\"w3_close()\" class=\"w3-bar-item w3-button w3-closenav w3-text-teal\">Close\n    <i class=\"fa fa-remove\"></i>\n  </a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">My profile</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">Link 2</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">Link 3</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">Link 4</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button\">Link 5</a>\n</nav>\n\n\n<!-- Pricing Row -->\n<div class=\"w3-row-padding w3-center w3-padding-64\" id=\"pricing\">\n  \n  <div class=\"popup\" onclick=\"myFunction()\">Click me to toggle the popup!\n  <span class=\"popuptext\" id=\"myPopup\">A Simple Popup!</span>\n  </div>\n  \n    <h2>PRICING</h2>\n    <p>Choose a pricing plan that fits your needs.</p><br>\n   <div *ngFor=\"let Tutorial of Tutorials\"> \n    <div class=\"w3-third w3-margin-bottom\">\n      <ul class=\"w3-ul w3-border w3-hover-shadow\">\n        <li class=\"w3-theme\">\n          <img class=\"first-slide\" src={{Tutorial.image}} style=\"width:100%;min-height:350px;max-height:600px;\">\n          <p class=\"w3-xlarge\">{{Tutorial.tutorialname}}</p>\n        </li>\n        <li class=\"w3-padding-6\"><b>By: {{Tutorial.ownername}}</b> </li>\n        <li class=\"w3-padding-6\"><b>Description: {{Tutorial.description}}</b></li>\n        <li class=\"w3-padding-6\"><b>Duration: {{Tutorial.duration}}</b> </li>\n        <li class=\"w3-padding-6\"><b>{{Tutorial.users}}</b> </li>\n        <li class=\"w3-padding-6\">\n          <h2 class=\"w3-wide\"><i></i></h2>\n          <span class=\"w3-opacity\">{{Tutorial.tutorialname}}</span>\n        </li>\n        <form *ngIf=\"checkToken\">\n        <li class=\"w3-theme-5 w3-padding-6\">\n          <input  #x  >\n          <button  (click)=\"AddComment(Tutorial._id,x.value)\"  class=\"w3-button w3-teal w3-padding-large\">Comment</button>                    \n        </li>\n        </form>\n        <li class=\"w3-theme-5 w3-padding-6\">\n          <button *ngIf=\"checkToken\" (click)=\"Sub(Tutorial._id)\"  class=\"w3-button w3-teal w3-padding-large\"> Subscribe</button>\n        </li>\n      </ul>\n    </div>\n   </div> \n</div> \n\n\n\n\n\n<!-- Carousel -->\n<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n  <!-- Indicators -->\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\" role=\"listbox\">\n    <div class=\"item active\">\n      <img class=\"first-slide\" src=\"../../assets/images/image4.jpg\" alt=\"First slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"second-slide\" src=\"../../assets/images/image2.jpg\" alt=\"Second slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"third-slide\" src=\"../../assets/images/image3.jpg\" alt=\"Third slide\">\n        </div>\n      </div>\n      <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\n        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\n        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div> <!-- /.carousel -->\n\n\n\n\n"
 
 /***/ }),
 
@@ -741,7 +766,7 @@ module.exports = "  \n\n<div class=\"col-md-6 col-md-offset-3\">\n<div class=\"w
 /***/ 566:
 /***/ (function(module, exports) {
 
-module.exports = "\n<!--<div class=\"w3-top\">\n <div class=\"w3-bar w3-theme-d2 w3-left-align\">\n  <a (click)=\"logout()\" routerLink='/' class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Logout</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal\" title=\"Search\"><i class=\"fa fa-search\"></i></a>\n </div>\n</div>-->\n\n\n\n<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n  <!-- Indicators -->\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\" role=\"listbox\">\n    <div class=\"item active\">\n      <img class=\"first-slide\" src=\"../../assets/images/image4.jpg\" alt=\"First slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"second-slide\" src=\"../../assets/images/image2.jpg\" alt=\"Second slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"third-slide\" src=\"../../assets/images/image3.jpg\" alt=\"Third slide\">\n        </div>\n      </div>\n      <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\n        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\n        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div><!-- /.carousel -->\n\n\n\n\n<div class=\"w3-row-padding w3-center w3-padding-64\" id=\"pricing\">\n    <h2>My courses</h2>\n    <!--<p>Choose a pricing plan that fits your needs.</p><br>-->\n    \n   <div *ngFor=\"let Tutorial of Tutorials\"> \n    <div class=\"w3-third w3-margin-bottom\">\n      <ul class=\"w3-ul w3-border w3-hover-shadow\">\n        <li class=\"w3-theme\">\n          <img class=\"first-slide\" src={{Tutorial.image}} style=\"width:100%;min-height:350px;max-height:600px;\">\n          <p class=\"w3-xlarge\">{{Tutorial.tutorialname}}</p>\n        </li>\n        <li class=\"w3-padding-6\"><b>By: {{Tutorial.ownername}}</b> </li>\n        <li class=\"w3-padding-6\"><b>Description: {{Tutorial.description}}</b></li>\n        <li class=\"w3-padding-6\"><b>Duration: {{Tutorial.duration}}</b> </li>\n        <li class=\"w3-padding-6\"><b>{{Tutorial.users}}</b> </li>\n        <li class=\"w3-padding-6\">\n          <h2 class=\"w3-wide\"><i></i></h2>\n          <span class=\"w3-opacity\">{{Tutorial.tutorialname}}</span>\n        </li>\n        <li class=\"w3-theme-l5 w3-padding-12\">\n          <button *ngIf=\"checkToken\" (click)=\"Sub(Tutorial._id)\"  class=\"w3-button w3-teal w3-padding-large\"><i class=\"fa fa-check\"></i> Subscribe</button>\n        </li>\n      </ul>\n    </div>\n   </div> \n</div> "
+module.exports = "\n<!--<div class=\"w3-top\">\n <div class=\"w3-bar w3-theme-d2 w3-left-align\">\n  <a (click)=\"logout()\" routerLink='/' class=\"w3-bar-item w3-button w3-right w3-hide-small w3-hover-white\">Logout</a>\n  <a href=\"#\" class=\"w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal\" title=\"Search\"><i class=\"fa fa-search\"></i></a>\n </div>\n</div>-->\n\n\n\n<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n  <!-- Indicators -->\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\" role=\"listbox\">\n    <div class=\"item active\">\n      <img class=\"first-slide\" src=\"../../assets/images/image4.jpg\" alt=\"First slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"second-slide\" src=\"../../assets/images/image2.jpg\" alt=\"Second slide\">\n        </div>\n        <div class=\"item\">\n          <img class=\"third-slide\" src=\"../../assets/images/image3.jpg\" alt=\"Third slide\">\n        </div>\n      </div>\n      <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\n        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\n        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div><!-- /.carousel -->\n\n\n\n\n<div class=\"w3-row-padding w3-center w3-padding-64\" id=\"pricing\">\n    <h2>My courses</h2>\n    <!--<p>Choose a pricing plan that fits your needs.</p><br>-->\n    \n   <div > \n    <div class=\"w3-third w3-margin-bottom\">\n      <ul class=\"w3-ul w3-border w3-hover-shadow\">\n        <li class=\"w3-theme\">\n          <img class=\"first-slide\" src=\"../../assets/images/image13.png\" style=\"width:100%;min-height:350px;max-height:600px;\">\n          <p class=\"w3-xlarge\">React Native</p>\n        <!--<!--</li>-->\n        <li class=\"w3-padding-6\"><b>By: Emad</b> </li>\n        <li class=\"w3-padding-6\"><b>Description: intro </b></li>\n        <li class=\"w3-padding-6\"><b>Duration: 11 hour</b> </li>\n        <!--<li class=\"w3-padding-6\"><b>{{Tutorial.users}}</b> </li>-->\n        <li class=\"w3-padding-6\">\n          <h2 class=\"w3-wide\"><i></i></h2>\n          <!--<span class=\"w3-opacity\"></span>-->\n        </li>\n        <!--<li class=\"w3-theme-l5 w3-padding-12\">\n          <button *ngIf=\"checkToken\" (click)=\"Sub(Tutorial._id)\"  class=\"w3-button w3-teal w3-padding-large\"><i class=\"fa fa-check\"></i> Subscribe</button>\n        </li>-->\n      </ul>\n    </div>\n   </div> \n\n<div > \n    <div class=\"w3-third w3-margin-bottom\">\n      <ul class=\"w3-ul w3-border w3-hover-shadow\">\n        <li class=\"w3-theme\">\n          <img class=\"first-slide\" src=\"../../assets/images/image8.png\" style=\"width:100%;min-height:350px;max-height:600px;\">\n          <p class=\"w3-xlarge\">Data Mining</p>\n        <!--<!</li>-->\n        <li class=\"w3-padding-6\"><b>By: Saif</b> </li>\n        <li class=\"w3-padding-6\"><b>Description: basics </b></li>\n        <li class=\"w3-padding-6\"><b>Duration: 6 hour</b> </li>\n        <!--<li class=\"w3-padding-6\"><b>{{Tutorial.users}}</b> </li>-->\n        <li class=\"w3-padding-6\">\n          <h2 class=\"w3-wide\"><i></i></h2>\n          <!--<span class=\"w3-opacity\"></span>-->\n        </li>\n        <!--<li class=\"w3-theme-l5 w3-padding-12\">\n          <button *ngIf=\"checkToken\" (click)=\"Sub(Tutorial._id)\"  class=\"w3-button w3-teal w3-padding-large\"><i class=\"fa fa-check\"></i> Subscribe</button>\n        </li>-->\n      </ul>\n    </div>\n   </div>\n\n\n\n</div> "
 
 /***/ }),
 

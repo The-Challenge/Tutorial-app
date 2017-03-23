@@ -21,39 +21,50 @@ var comparePass=function(pass,hash,callback){
     });
 };
 
-	var gettu = function(user){
+	var gettu = function(user,callback){
 			let arr=[]
 			let answer 
 			// let tutorials = user.tutorials
 				// for(var i=0;i< tutorials.length;i++){
-				
-					 Tutorial.findOne({_id:user},function (err,tutorial) {
-						// console.log("inside loooooooooooooooooooop loooool",tutorial)
-						if (err) {
-							res.status(500).send(err);
+					console.log('userrr',user)
+					 Tutorial.findOne({_id:user}).exec((err,tutorial)=> {
+						if(err){
+							console.log(err)
 						}
 						else{
-							arr.push(tutorial)
-							//return tutorial
-							// arr.push(tutorial)
-							// if(i===tutorials.length-1){
-							// 	console.log('in ifffffffffffffff',arr)
-							// res.status(200).json(arr)
-							// }
+							console.log('TTTTTTTTTTTTTTTTTT',tutorial)
+							callback( tutorial)
 						}
-					})
+					 })
+					 
+					 
+					//  function (err,tutorial) {
+					// 	// console.log("inside loooooooooooooooooooop loooool",tutorial)
+					// 	if (err) {
+					// 		res.status(500).send(err);
+					// 	}
+					// 	else{
+					// 		arr.push(tutorial)
+					// 		//return tutorial
+					// 		// arr.push(tutorial)
+					// 		// if(i===tutorials.length-1){
+					// 		// 	console.log('in ifffffffffffffff',arr)
+					// 		// res.status(200).json(arr)
+					// 		// }
+					// 	}
+					// })
 					
-					.then(function(data){
+					// .then(function(data){
 
-						console.log('%%%%%%%%%%%%%%%%%',data)
-						answer = data
-					}).then(function(){
+					// 	console.log('%%%%%%%%%%%%%%%%%',data)
+					// 	answer = data
+					// }).then(function(){
 
-					console.log(answer)
-					return answer
-					}
+					// console.log(answer)
+					// return answer
+					// }
 
-					)
+					// )
 				// console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!',arr)
 			// }
 		
@@ -167,7 +178,8 @@ module.exports ={
 	GetUserTutorials : function(req,res){
 		// console.log('get userrrrrrrrrrrrrr tutorialssss',req.body)
 		var arr = []
-		var counter=0;
+		var counter=-1;
+		var flag= false
 		// var count=0;
 
 		User.findOne({username:req.body.username},function (err,user) {
@@ -182,15 +194,23 @@ module.exports ={
 				// })
 				for(let i=0;i< tutorials.length;i++){
 					// console.log("#######################",(gettu(tutorials[i])))
+					 counter++
 					 gettu(tutorials[i],function(data){
-					 arr.push(data)
-					 console.log("dfghjk,l.;/",data)
-					})
-					if(counter === tutorials.length-2){
-						console.log("helllllllllllllo",arr)
-						res.json(arr);
-					}
-					counter++;
+						 arr.push(data)
+						//  console.log('zZZZZzz',data)
+						 console.log('!!!!!',i,counter)
+						 if(counter===tutorials.length-1){
+							 console.log('couneterr',arr)
+							 flag=true
+						 }
+						 
+					 })
+					// console.log('????????',arr)
+					// if(counter === tutorials.length-2){
+					// 	console.log("helllllllllllllo",arr)
+					// 	res.json(arr);
+					// }
+					// counter++;
 				// 	//setTimeout(function() {
 						
 				// 	console.log("!!!!!!!!!!!!!!!!!!!!!",arr)
@@ -198,7 +218,13 @@ module.exports ={
 				// /////
 				// }
 			}
+			while(flag){
+				console.log('!@###@#@#@',arr)
+				flag =false
+				res.send(arr)
 			}
+
+		}
 
 		})
 

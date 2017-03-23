@@ -32,15 +32,14 @@ export class UserpageComponent implements OnInit {
   ngOnInit() {
        var TutorialID = JSON.parse(localStorage.getItem('TutorialID'))
 
-            console.log('userpage!!@',TutorialID)
 
-  this.userprofileService.getUserTutorial(TutorialID)
-   .subscribe(
-                data => {
-                    console.log('mai page component data!!!!!!!!!!!!!!!!!',data)
-                },
-                error =>{
-                });
+  // this.userprofileService.getUserTutorial(TutorialID)
+  //  .subscribe(
+  //               data => {
+  //                   console.log('mai page component data!!!!!!!!!!!!!!!!!',data)
+  //               },
+  //               error =>{
+  //               });
 
   }
 
